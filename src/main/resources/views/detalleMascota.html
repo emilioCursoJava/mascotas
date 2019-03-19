@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<head th:include="header :: headerFragment">
+</head>
+<div th:include="header :: copy"></div>
+
+<div class="container">
+
+	<div class="jumbotron">
+		<fieldset>
+			<legend>Datos de la mascota</legend>
+			<p th:text="'Código : '+ ${animal.codigo}">
+			<p th:text="'Nombre : '+ ${animal.nombre}">
+			<p
+				th:text="'Descripcion especie : '+ ${animal.getDescripcionEspecie()}">
+			<p th:text="'Estado : '+ ${animal.estado}">
+			<p th:text="'Fecha nacimiento : '+ ${animal.fechaNacimiento}">
+			<p th:text="'Numero visitas : '+ ${animal.numVisitas}">
+			<p
+				th:text="'Propietario : '+ ${animal.propietario.nombre} + ' '+ ${animal.propietario.apellidos} ">
+		</fieldset>
+		<a th:href="mascota" class="btn btn-success">Volver</a>
+
+	</div>
+
+
+	<footer class="footer">
+		<div th:include="footer :: copy"></div>
+	</footer>
+
+
+
+</div>
+<!-- /container -->
+
+</body>
+</html>

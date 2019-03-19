@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<head th:include="header :: headerFragment">
+</head>
+<div th:include="header :: copy"></div>
+
+<div class="container">
+
+	<div class="jumbotron">
+		<h1>[[#{index.bienvenida}]]</h1>
+		<div class="container">
+			<div class="row table-responsive">
+				<h3>[[#{index.listado}]]</h3>
+				<table id="customerTable" class="table">
+					<thead>
+						<tr>
+							<th>Codigo</th>
+							<th>Nombre</th>
+							<th>Nombre propietario</th>
+							<th>Apellidos propietario</th>
+							<th>Estado</th>
+							<th>Ver detalle</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="animal: ${listaAnimales}">
+							<td th:text="${animal.codigo}"></td>
+							<td th:text="${animal.nombre}"></td>
+							<td th:text="${animal.propietario.nombre}"></td>
+							<td th:text="${animal.propietario.apellidos}"></td>
+							<td th:text="${animal.estado}"></td>
+
+							<td><a
+								th:href="@{|/consultaDetalle?codigo=${animal.codigo}|}">Ver
+									detalle</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+
+		</div>
+
+		<footer class="footer">
+			<div th:include="footer :: copy"></div>
+		</footer>
+
+	</div>
+	<!-- /container -->
+
+	</body>
+</html>
